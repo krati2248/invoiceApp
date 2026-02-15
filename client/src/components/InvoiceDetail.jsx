@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./InvoiceDetail.css";
 import generatePDF from 'react-to-pdf';
@@ -58,89 +58,98 @@ const InvoiceDetail = () => {
   if (!invoice) return <p>Loading...</p>;
 
   return (
-     <div className="invoice-detail-page">
-    <div className="invoice-card" ref={pdfRef}>
+    <div className="invoice-detail-page">
+      <div className="invoice-card" ref={pdfRef}>
 
-      <div className="invoice-header">
-        <h2>Invoice Number: {invoice.invoiceNumber}</h2>
-        <span className={`status ${invoice.status.toLowerCase()}`}>
-          {invoice.status}
-        </span>
-      </div>
-<br/>
-        <div className="invoice-meta">
-          
-          <p><b>Customer:</b> {invoice.customerName}</p>
-          
-          <p><b>Issue Date:</b> {new Date(invoice.issueDate).toLocaleDateString()}</p>
-          
-          <p><b>Due Date:</b> {new Date(invoice.dueDate).toLocaleDateString()}</p>
-          <br/>
+        <div className="invoice-header">
+          <h2>Invoice Number: {invoice.invoiceNumber}</h2>
+          <span className={`status ${invoice.status.toLowerCase()}`}>
+            {invoice.status}
+          </span>
         </div>
-        <br/>
-      <h3>Line items</h3>
-      <table className="invoice-table">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Qty</th>
-            <th>Unit Price</th>
-            <th>Line Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lines.map((item, i) => (
-            <tr key={i}>
-              <td>{item.description}</td>
-              <td>{item.quantity}</td>
-              <td>₹{item.unitPrice}</td>
-              <td>₹{item.lineTotal}</td>
+        <br />
+        <div className="invoice-meta">
+
+          <p><b>Customer:</b> {invoice.customerName}</p>
+
+          <p><b>Issue Date:</b> {new Date(invoice.issueDate).toLocaleDateString()}</p>
+
+          <p><b>Due Date:</b> {new Date(invoice.dueDate).toLocaleDateString()}</p>
+          <br />
+        </div>
+        <br />
+        <h3>Line items</h3>
+        <table className="invoice-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Qty</th>
+              <th>Unit Price</th>
+              <th>Line Total</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {lines.map((item, i) => (
+              <tr key={i}>
+                <td>{item.description}</td>
+                <td>{item.quantity}</td>
+                <td>₹{item.unitPrice}</td>
+                <td>₹{item.lineTotal}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      <div className="invoice-summary">
-        <p><b>Total:</b> ₹{invoice.total}</p>
-        <p><b>Amount Paid:</b> ₹{invoice.amountPaid}</p>
-        <p><b>Balance Due:</b> ₹{invoice.balanceDue}</p>
-      </div>
+        <div className="invoice-summary">
+          <p><b>Total:</b> ₹{invoice.total}</p>
+          <p><b>Amount Paid:</b> ₹{invoice.amountPaid}</p>
+          <p><b>Balance Due:</b> ₹{invoice.balanceDue}</p>
+        </div>
 
-      <button className="pay-btn" onClick={() => setShowModal(true)}>
-        Add Payment
+        <button className="pay-btn" onClick={() => setShowModal(true)}>
+          Add Payment
         </button>
         <button className="pay-btn" onClick={() => generatePDF(pdfRef, { filename: `invoice-${invoice.invoiceNumber}.pdf` })}>
           Download pdf
         </button>
-    </div>
+      </div>
 
-    {showModal && (
-      <div className="modal-overlay">
-        <div className="modal-box">
-          <h3>Add Payment</h3>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <h3>Add Payment</h3>
 
-          <label>Amount</label>
-          <input
-            type="number"
-            value={payment.amount}
-            onChange={e => handlePaymentChange("amount", Number(e.target.value))}
-          />
+            <label>Amount</label>
+            <input
+              type="number"
+              value={payment.amount}
+              min="0"
+              placeholder="Enter amount"
+              onChange={e => {
+                const val = e.target.value;
+                setPayment(prev => ({
+                  ...prev,
+                  amount: val === "" ? "" : Number(val)
+                }));
+              }}
+            />
 
-          <label>Payment Date</label>
-          <input
-            type="date"
-            value={payment.paymentDate}
-            onChange={e => handlePaymentChange("paymentDate", e.target.value)}
-          />
 
-          <div className="modal-actions">
-            <button onClick={handlePaymentSubmit}>Submit</button>
-            <button className="cancel" onClick={() => setShowModal(false)}>Cancel</button>
+            <label>Payment Date</label>
+            <input
+              type="date"
+              value={payment.paymentDate}
+              onChange={e => handlePaymentChange("paymentDate", e.target.value)}
+            />
+
+            <div className="modal-actions">
+              <button onClick={handlePaymentSubmit}>Submit</button>
+              <button className="cancel" onClick={() => setShowModal(false)}>Cancel</button>
+            </div>
           </div>
         </div>
-      </div>
-    )}
-  </div>
+      )}
+    </div>
   );
 }
 
