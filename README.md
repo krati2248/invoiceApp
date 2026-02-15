@@ -65,6 +65,8 @@ Open new terminal:
 <br/>
 Run below commands
 <br/>
+cd invoiceApp
+<br/>
 cd client
 <br/>
 npm install
