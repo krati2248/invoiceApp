@@ -39,7 +39,7 @@ invoice-app/
 
 run command on terminal:
 <br/>
-git clone https://github.com/your-username/invoice-app.git
+git clone https://github.com/krati2248/invoiceApp.git
 <br/>
 cd invoice-app
 
