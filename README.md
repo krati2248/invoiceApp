@@ -72,6 +72,9 @@ npm install
 npm run dev
 <br/>
 
+Click on: 
+http://localhost:5173/
+
 # Future Enhancements
 
  User authentication
