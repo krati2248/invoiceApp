@@ -55,11 +55,11 @@ PORT=3000
 <br/>
 MONGO_URI=mongodb://127.0.0.1:27017/invoiceDB
 
-# Run server command: 
+### Run server command: 
 <br/>
 node app.js
-
 <br/>
+
 ### 3️ Setup Frontend (Client)
 <br/>
 Open new terminal:
