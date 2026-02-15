@@ -50,7 +50,7 @@ cd server
 <br/>
 npm install
 
-#### Create .env file inside server/
+#### Open invoiceApp folder that was cloned and create .env file inside server/
 PORT=3000
 <br/>
 MONGO_URL=mongodb://127.0.0.1:27017/invoiceDB
