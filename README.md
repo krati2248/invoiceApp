@@ -41,7 +41,7 @@ run command on terminal:
 <br/>
 git clone https://github.com/krati2248/invoiceApp.git
 <br/>
-cd invoice-app
+cd invoiceApp
 
 ### 2 Setup Backend (Server)
 run command:
