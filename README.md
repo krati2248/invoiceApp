@@ -63,9 +63,7 @@ node app.js
 
 Open new terminal:
 <br/>
-Run below commands
-<br/>
-cd invoiceApp
+Run below commands 
 <br/>
 cd client
 <br/>
