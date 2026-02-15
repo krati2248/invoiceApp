@@ -21,6 +21,7 @@ Features:
 
 invoice-app/
 │
+<br/>
 ├── client/ # React frontend
 ├── server/ # Node.js backend
 ├── .env # Environment variables (not pushed to GitHub)
