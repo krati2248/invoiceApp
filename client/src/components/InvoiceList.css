@@ -1,0 +1,106 @@
+.invoice-list-container {
+  padding: 24px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.table-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top:8px
+}
+
+.invoice-table th {
+  background: #f3f4f6;
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.invoice-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.invoice-table tr:hover {
+  background: #f9fafb;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Status Colors */
+.status-badge.paid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.pending,
+.status-badge.unpaid {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #6366f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.view-btn:hover {
+  background: #1d4ed8;
+}
+.archive-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.line-display {
+  display: flex;                
+  align-items: center;          
+  justify-content: space-between;  
+  padding: 2px;           
+  background-color: #fff; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  margin-top:6px; 
+}
+.restore-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
